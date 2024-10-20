@@ -6,7 +6,6 @@ import Home from "./Routes/Home";
 import Layout from "./Routes/Layout";
 import Products from "./Routes/Products";
 import Search from "./Routes/Search";
-import Profile from "../archive/Profile";
 import Product from "./Routes/Product";
 import Payment from "./Routes/Payment";
 import NotFound from "./Routes/NotFound";
