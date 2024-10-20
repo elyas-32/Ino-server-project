@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+    font-family: shabnam;
+    src: url('./assets/fonts/Shabnam.woff2');
+}
+.after-image::after {
+    background: linear-gradient(180deg, #232323 0%, transparent 20%, transparent 80%, #232323 100%);
+}
+.scroll-hidden::-webkit-scrollbar {
+    display: none;
+}   
