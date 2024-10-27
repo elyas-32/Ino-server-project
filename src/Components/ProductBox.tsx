@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { splitNumber, isInBasketFunc } from "../assets/data";
+import { splitNumber, isInBasketFunc,ProductItem,BasketItem } from "../assets/data";
 import ProductCountControl from "./ProductCountControl";
-export default function ProductBox({ product, basket, ...props }) {
+export default function ProductBox({ product, basket, ...props }:{product:ProductItem,basket:BasketItem[],[key:string]:any}) {
   const navigate = useNavigate();
   let isInBasket = isInBasketFunc(basket, product);
   return (

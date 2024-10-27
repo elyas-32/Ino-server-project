@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom";
-export default function FoodSection({ title, image, catID }) {
+interface FoodSectionProps {
+  title:string, image:string, catID:number
+}
+export default function FoodSection({ title, image, catID }:FoodSectionProps) {
   let navigate = useNavigate();
   return (
     <section

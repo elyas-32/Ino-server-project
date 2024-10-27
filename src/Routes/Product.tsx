@@ -1,26 +1,34 @@
 import { useNavigate, useParams } from "react-router-dom";
 import NavBar from "../Components/NavBar";
 import { useState, useEffect, useContext } from "react";
-import { fetchData } from "../assets/data";
+import { fetchData,ProductItem } from "../assets/data";
 import { Basket } from "../main";
 import { splitNumber, isInBasketFunc } from "../assets/data";
 import ProductCountControl from "../Components/ProductCountControl";
 import BottomButton from "../Components/Buttons/BottomButton";
 export default function Product() {
-  let { pID } = useParams();
+  let  pIdObj  = useParams<{pID:string}>();
+  let pID = Number(pIdObj.pID);
   let navigate = useNavigate();
-  useEffect(()=>{
-    if(isNaN(pID)|| pID > 9|| pID <= 0) {
-      navigate('/products')
+  useEffect(() => {
+    if (isNaN(pID) || pID > 9 || pID <= 0) {
+      navigate("/products");
     }
-  },[])
-  const [product, setProduct] = useState([]);  
+  }, []);
+  const [product, setProduct] = useState<ProductItem>({
+    name: '',
+    category: 0,
+    price: 0,
+    description: '',
+    image: '',
+    id: 0,})
   const { basket, setBasket } = useContext(Basket);
   useEffect(() => {
-    fetchData(
-      setProduct,
-      `http://185.181.182.21:8000/restaurant/api/v1/restaurant_product/${pID}.json`
-    );
+    fetchData({
+      setState: setProduct,
+      url: `http://185.181.182.21:8000/restaurant/api/v1/restaurant_product/${pID}.json`,
+      type: "GET",
+    });
   }, []);
   return (
     <>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import BackBtn from "./Buttons/BackBtn";
 import ToggleGrid from "./Buttons/ToggleGridBtn";
 import { useLocation } from "react-router-dom";
@@ -7,7 +7,18 @@ import Detail from "./Detail";
 import ShareBtn from "./Buttons/ShareBtn";
 import DetailBtn from "./Buttons/DetailBtn";
 import HeaderLogo from "./HeaderLogo";
-export default function NavBar({ title, setGrid, grid, ...props }) {
+interface NavBarPropsGrid {
+  setGrid: React.Dispatch<SetStateAction<boolean>>;
+  grid: boolean;
+  title?:string;
+}
+interface NavBarPropsTitle {
+  title:string;
+  setGrid?: React.Dispatch<SetStateAction<boolean>>;
+  grid?: boolean;
+}
+type NavBarProps = NavBarPropsGrid | NavBarPropsTitle ;
+export default function NavBar({ title, setGrid, grid }:NavBarProps) {
   const [show, setShow] = useState(false);
   const Location = useLocation();
   let showSomethingFlag =
@@ -23,7 +34,7 @@ export default function NavBar({ title, setGrid, grid, ...props }) {
             {showSomethingFlag && <DetailBtn setShow={setShow} />}
             {Location.pathname === "/products" ? (
               <SearchBtn />
-            ) : Location.pathname === "/" ? (
+            ) : Location.pathname === "/" && grid && setGrid? (
               <ToggleGrid grid={grid} setGrid={setGrid} />
             ) : (
               ""

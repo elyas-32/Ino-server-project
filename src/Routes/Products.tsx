@@ -10,18 +10,20 @@ import {
   categoryIDs,
   splitNumber,
   calcTotalPrice,
+  ProductItem
 } from "../assets/data.jsx";
 import { useLocation } from "react-router-dom";
-import { Basket } from "../main";
+import { Basket} from "../main";
+import { CategoryItem } from "./Home.jsx";
 import CompletePayment from "../Components/CompletePayment.jsx";
 export default function Products() {
   const Location = useLocation();
   const [categories, setCategories] = useState([]);
-  const [category, setCategory] = useState(
+  const [category, setCategory] = useState<number>(
     Location.state ? Location.state.id : 4
   );
-  const [products, setProducts] = useState([]);
-  let renderingProducts = products.filter((p) => {
+  const [products, setProducts] = useState<ProductItem[]>([]);
+  let renderingProducts = products.filter((p:ProductItem) => {
     if (category === 4) {
       return p;
     }
@@ -29,12 +31,12 @@ export default function Products() {
   });
   const { basket, setBasket } = useContext(Basket);
   useEffect(() => {
-    fetchData(setCategories, categoryAPI);
-    fetchData(setProducts, productsAPI);
+    fetchData({ setState: setCategories, url: categoryAPI, type: "GET" });
+    fetchData({ setState: setProducts, url: productsAPI, type: "GET" });
   }, []);
   return (
     <>
-      <NavBar />
+      <NavBar title=""/>
       <ul className="mt-[70px] flex gap-4 sticky top-[70px] p-2 bg-background overflow-auto scroll-hidden z-20">
         <FilterItem
           catID={categoryIDs[3]}
@@ -43,7 +45,7 @@ export default function Products() {
           imgSrc={categoryImages[3]}
           title="all products"
         />
-        {categories.map((categoryItem, index) => {
+        {categories.map((categoryItem:CategoryItem, index) => {
           return (
             <FilterItem
               catID={categoryIDs[index]}

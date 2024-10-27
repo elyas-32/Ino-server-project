@@ -1,4 +1,4 @@
-export default function ShareBtn(params) {
+export default function ShareBtn() {
   return (
     <button
       className="size-[38px] flex justify-center items-center ml-2 hover:bg-itemBacground rounded-lg transition"

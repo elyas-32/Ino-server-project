@@ -1,4 +1,6 @@
-export default function DetailBtn({setShow}) {
+import React, { SetStateAction } from "react";
+
+export default function DetailBtn({setShow}:{setShow:React.Dispatch<SetStateAction<boolean>>}) {
   return (
     <button
       className="size-[34px] flex items-center justify-center hover:bg-itemBacground rounded-lg transition"

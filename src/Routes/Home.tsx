@@ -7,11 +7,14 @@ import {
   categoryAPI,
   categoryIDs,
 } from "../assets/data.jsx";
+export interface CategoryItem {
+      name: string
+}
 export default function Home() {
   const [grid, setGrid] = useState(false);
-  const [category, setCategory] = useState([]);
+  const [categories, setCategories] = useState<CategoryItem[]>([]); 
   useEffect(() => {
-    fetchData(setCategory, categoryAPI);
+    fetchData({ setState: setCategories, type: "GET", url: categoryAPI });
   }, []);
   return (
     <>
@@ -24,7 +27,7 @@ export default function Home() {
             : { display: "flex", flexDirection: "column" }
         }
       >
-        {category.map((category, index) => {
+        {categories.map((category, index) => {
           return (
             <FoodSection
               image={categoryImages[index]}

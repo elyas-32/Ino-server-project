@@ -1,4 +1,4 @@
-export default function Paragraph({ price, title }) {
+export default function Paragraph({ price, title }:{price:string,title:string}) {
   return (
     <div className="flex items-center mt-5">
       {title ? title : ""}{" "}

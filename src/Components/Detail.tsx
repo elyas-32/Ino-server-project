@@ -1,6 +1,6 @@
-import { useEffect } from "react";
-export default function Detail({ show, setShow }) {
-  function handleDocClick(e) {
+import React, { SetStateAction, useEffect } from "react";
+export default function Detail({ show, setShow }:{show:boolean,setShow:React.Dispatch<SetStateAction<boolean>>}) {
+  function handleDocClick() {
     setShow(false);
   }
   useEffect(() => {

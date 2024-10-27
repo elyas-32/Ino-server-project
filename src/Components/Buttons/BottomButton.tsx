@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-export default function BottomButton({to, title}) {
+export default function BottomButton({to, title}:{to:string,title:string}) {
     const isCompleteBtn = title === 'تکمیل خرید' ? true : false;
   return (
     <Link

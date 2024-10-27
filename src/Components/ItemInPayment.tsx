@@ -1,6 +1,13 @@
-import { splitNumber } from "../assets/data";
+import { splitNumber,ProductItem,BasketItem } from "../assets/data";
 import ProductNumInput from "./ProductNumInput";
-export default function ItemInPayment({ imgSrc, basket, setBasket, product }) {
+import { SetStateAction } from "react";
+interface ItemInPaymentProps {
+  imgSrc:string;
+  basket:BasketItem[];
+  setBasket:React.Dispatch<SetStateAction<BasketItem[]>>;
+  product: ProductItem;
+}
+export default function ItemInPayment({ imgSrc, basket, setBasket, product }:ItemInPaymentProps) {
   return (
     <li className="flex justify-between items-center mb-5">
       <div className="flex items-center gap-2">

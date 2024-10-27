@@ -1,4 +1,4 @@
-export default function BackBtn(params) {
+export default function BackBtn() {
   return (
     <button
       className="size-[38px] flex justify-center items-center ml-2 hover:bg-itemBacground rounded-lg transition"

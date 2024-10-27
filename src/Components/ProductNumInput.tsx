@@ -1,5 +1,11 @@
-export default function ProductNumInput({ basket, setBasket, product }) {
-  let basketArr = basket.slice().map((basketItem) => ({ ...basketItem }));
+import { SetStateAction } from "react";
+import { BasketItem,ProductItem } from "../assets/data";
+export interface NumProps {basket:BasketItem[],setBasket:React.Dispatch<SetStateAction<BasketItem[]>>,product:ProductItem}
+export default function ProductNumInput({ basket, setBasket, product }:NumProps) {
+  let basketArr = basket.slice().map((basketItem) => {
+    return{ ...basketItem }
+  }
+  );
   let productIndex = basketArr.findIndex((basketItem) => {
     return basketItem.name === product.name;
   });

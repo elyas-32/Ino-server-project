@@ -1,9 +1,17 @@
+import { SetStateAction } from "react";
+
 export default function FilterItem({
   imgSrc,
   title,
   category,
   setCategory,
   catID,
+}:{
+  imgSrc:string,
+  title:string,
+  category:number,
+  setCategory:React.Dispatch<SetStateAction<number>>,
+  catID:number,
 }) {
   return (
     <li

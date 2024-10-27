@@ -1,4 +1,5 @@
-export default function AddProductBtn({basket, product, setBasket}) {
+import { NumProps } from "../ProductNumInput";
+export default function AddProductBtn({basket, product, setBasket}:NumProps) {
   return (
     <button
       className="bg-primary flex gap-2 justify-center items-center w-full rounded-lg h-8 hover:bg-primaryDarker"

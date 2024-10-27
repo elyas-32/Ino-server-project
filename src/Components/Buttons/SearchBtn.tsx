@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
-
-export default function SearchBtn(params) {
+export default function SearchBtn() {
   const navigate = useNavigate()
   return (
     <button className="size-[38px] flex justify-center items-center ml-2 hover:bg-itemBacground rounded-lg transition" onClick={()=>{navigate('/search')}}>
