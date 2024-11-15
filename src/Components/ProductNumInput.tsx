@@ -1,6 +1,6 @@
 import { SetStateAction } from "react";
 import { BasketItem,ProductItem } from "../assets/data";
-export interface NumProps {basket:BasketItem[],setBasket:React.Dispatch<SetStateAction<BasketItem[]>>,product:ProductItem}
+export interface NumProps {basket:BasketItem[],setBasket:React.Dispatch<SetStateAction<BasketItem[]>>|null,product:ProductItem}
 export default function ProductNumInput({ basket, setBasket, product }:NumProps) {
   let basketArr = basket.slice().map((basketItem) => {
     return{ ...basketItem }
@@ -16,7 +16,7 @@ export default function ProductNumInput({ basket, setBasket, product }:NumProps)
         onClick={(e) => {
           e.stopPropagation();
           basketArr[productIndex].count = basketArr[productIndex].count + 1;
-          setBasket(basketArr);
+          setBasket ? setBasket(basketArr) : console.error('uncorrecct setState provided')
         }}
       >
         <svg
@@ -35,10 +35,10 @@ export default function ProductNumInput({ basket, setBasket, product }:NumProps)
           e.stopPropagation();
           if (basketArr[productIndex].count > 1) {
             basketArr[productIndex].count = basketArr[productIndex].count - 1;
-            setBasket(basketArr);
+          setBasket ? setBasket(basketArr) : console.error('uncorrecct setState provided')
           } else {
             basketArr.splice(productIndex, 1);
-            setBasket(basketArr);
+          setBasket ? setBasket(basketArr) : console.error('uncorrecct setState provided')
           }
         }}
       >

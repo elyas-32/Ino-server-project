@@ -4,7 +4,7 @@ import { SetStateAction } from "react";
 interface ItemInPaymentProps {
   imgSrc:string;
   basket:BasketItem[];
-  setBasket:React.Dispatch<SetStateAction<BasketItem[]>>;
+  setBasket:React.Dispatch<SetStateAction<BasketItem[]>>|null;
   product: ProductItem;
 }
 export default function ItemInPayment({ imgSrc, basket, setBasket, product }:ItemInPaymentProps) {

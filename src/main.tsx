@@ -19,11 +19,11 @@ import NewProduct from "../archive/NewProduct";
 import { BasketItem } from "./assets/data";
 interface basketContex {
   basket: BasketItem[];
-  setBasket: React.Dispatch<SetStateAction<BasketItem[]>>;
+  setBasket: React.Dispatch<SetStateAction<BasketItem[]>>|null;
 }
 export const Basket = createContext<basketContex>({
   basket: [],
-  setBasket: () => {},
+  setBasket: null,
 });
 const BasketProvider = ({ children }: { children: ReactNode }) => {
   const [basket, setBasket] = useState<BasketItem[]>([]);
@@ -31,9 +31,27 @@ const BasketProvider = ({ children }: { children: ReactNode }) => {
     <Basket.Provider value={{ basket, setBasket }}>{children}</Basket.Provider>
   );
 };
+
+
+interface UsersContex {
+  users: object[];
+  setUsers: React.Dispatch<SetStateAction<object[]>>;
+}
+export const Users = createContext<UsersContex>({
+  users: [],
+  setUsers: () => {},
+});
+const UsersProvider = ({ children }: { children: ReactNode }) => {
+  const [users, setUsers] = useState<object[]>([]);
+  return (
+    <Users.Provider value={{ users, setUsers }}>{children}</Users.Provider>
+  );
+ };
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
+  // <StrictMode>
+
     <BasketProvider>
+      <UsersProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -47,6 +65,7 @@ createRoot(document.getElementById("root")!).render(
           </Route>
         </Routes>
       </BrowserRouter>
+      </UsersProvider>
     </BasketProvider>
-  </StrictMode>
+  // </StrictMode>
 );

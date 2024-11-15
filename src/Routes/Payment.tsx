@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import NavBar from "../Components/NavBar";
-import { Basket } from "../main";
+import { Basket, Users } from "../main";
 import { calcTotalPrice, splitNumber } from "../assets/data";
 import ItemInPayment from "../Components/ItemInPayment";
 import Paragraph from "../Components/Paragraph";
@@ -8,6 +8,10 @@ import { useNavigate } from "react-router-dom";
 import BottomButton from "../Components/Buttons/BottomButton";
 export default function Payment() {
   const { basket, setBasket } = useContext(Basket);
+  const x = useContext(Users);
+  console.log(basket);
+  console.log(x);
+  
   let navigate = useNavigate();
   useEffect(() => {
     if (!basket[0]) {
@@ -51,7 +55,8 @@ export default function Payment() {
       <div
         className="fixed left-0 right-0 bottom-4 max-w-[700px] mx-4 min-[700px]:mx-auto"
         onClick={(e) => {
-          setBasket([]);
+          x.setUsers([{hello:'flkasddddddddddddddddddddddddddddddddddddddddddddd'}])
+          setBasket ? setBasket([]) : console.error('uncorrecct setState provided')
         }}
       >
         <BottomButton to="/products" title="ادامه و تصویه حساب" />
