@@ -10,5 +10,5 @@
 - React-router
 - tailwind
 ## پیش نمایش : 
-![عکسی از یکی از صفحات اپ](https://github.com/elyas-32/Ino-server-project/tree/master/src/assets/images/IMG_20241115_224004_744.jpg)
-![عکسی از یکی از صفحات اپ](https://github.com/elyas-32/Ino-server-project/tree/master/src/assets/images/IMG_20241115_224005_107.jpg)
+![عکسی از یکی از صفحات اپ](src/assets/images/IMG_20241115_224005_107.jpg)
+![عکسی از یکی از صفحات اپ](src/assets/images/IMG_20241115_224005_107.jpg)
